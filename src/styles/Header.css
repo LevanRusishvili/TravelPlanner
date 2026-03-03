@@ -1,0 +1,38 @@
+/* Header.css */
+header {
+    background-color: white;
+    padding: 15px;
+    position: fixed; /* Makes it stay in place */
+    top: 0; /* Stick to top */
+    left: 0; /* Stick to left */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensures it stays above other content */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between logo and button */
+    align-items: center; /* Vertically center items */
+}
+
+header h1 {
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    margin: 0; /* Remove default margin */
+}
+
+header button {
+    font-family: sans-serif;
+    font-size: 1rem;
+    padding: 10px 25px;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.671);
+    color: white; /* Added for better contrast */
+    border: none;
+    border-radius: 4px; /* Added for rounded corners */
+    transition: background-color 0.3s ease;
+}
+
+header button:hover {
+    background-color: rgba(0, 0, 255, 0.822);
+    color: white;
+}

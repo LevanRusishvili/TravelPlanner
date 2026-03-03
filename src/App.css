@@ -1,0 +1,33 @@
+
+body {
+  margin: 0;
+  padding: 0;
+ 
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  background-color: aliceblue;
+}
+
+header h1 {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+header button {
+  background-color: rgb(80, 80, 235);
+  border: none;
+  color: white;
+  padding:0;
+  margin:0;
+  padding: 0 10px 0 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
