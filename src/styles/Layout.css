@@ -1,11 +1,14 @@
-/* styles/Layout.css */
 .app-container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  background-color: rgba(217, 229, 255, 0.993); /* Move blue background here */
 }
 
 .main-content {
   flex: 1;
-  padding-top: 80px; /* Add padding equal to header height + some extra */
+  margin-top: 70px; /* Space for fixed header */
+  background: transparent; /* Remove white background */
+  padding: 0; /* Remove any padding */
+  width: 100%;
 }

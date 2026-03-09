@@ -1,6 +1,10 @@
-
+import { useNavigate } from "react-router-dom";
 import "../styles/HomePage.css";
 const HomePage = () => {
+  const navigate = useNavigate();
+  const explorePlaces = () => {
+    navigate("/plan-trip");
+  }
   return (
     <div className="container">
       <div className="main-info">
@@ -13,7 +17,7 @@ const HomePage = () => {
             just a click away.
           </h3>
           <div className="buttons">
-            <button className="explore-places">Explore Places</button>
+            <button className="explore-places" onClick={explorePlaces}>Explore Places</button>
             <button className="learn-more">Learn More</button>
           </div>
         </div>

@@ -8,7 +8,6 @@
 // } from "../store/header/header.slice";
 // import "../styles/Header.css";
 
-
 // const Header = () => {
 //   const dispatch = useDispatch();
 //   const navigate = useNavigate();
@@ -46,23 +45,27 @@
 
 // export default Header;
 
-
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import {setHomePageActive, setTripPageActive, toggleTripSidebar } from "../store/header/header.slice"; 
+import {
+  setHomePageActive,
+  setTripPageActive,
+  toggleTripSidebar,
+} from "../store/header/header.slice";
 import { useEffect } from "react";
+import "../styles/Header.css";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { isHomePageActive} =  useSelector((state) => state.header);
- 
+  const { isHomePageActive } = useSelector((state) => state.header);
+
   const handlePlanTripClick = () => {
     console.log("current page active: ", isHomePageActive ? "Home" : " Trip");
-    
-    if(isHomePageActive) {
+
+    if (isHomePageActive) {
       console.log("navigating to plantrip page");
       dispatch(setTripPageActive());
       navigate("/plan-trip");
@@ -70,18 +73,18 @@ const Header = () => {
       console.log("toggling trip sidebar");
       dispatch(toggleTripSidebar());
     }
-  }
+  };
 
   useEffect(() => {
- console.log("URL changed to:", location.pathname);
-  if(location.pathname ==="/") {
-    dispatch(setHomePageActive());
-  } else if(location.pathname === "/plan-trip") {
-    dispatch(setTripPageActive());
-  }
+    console.log("URL changed to:", location.pathname);
+    if (location.pathname === "/") {
+      dispatch(setHomePageActive());
+    } else if (location.pathname === "/plan-trip") {
+      dispatch(setTripPageActive());
+    }
   }, [location.pathname, dispatch]);
 
-   return (
+  return (
     <header>
       <h1>TravelPlanner</h1>
       <button onClick={handlePlanTripClick} className="plan-trip-btn">
@@ -90,18 +93,11 @@ const Header = () => {
       </button>
     </header>
   );
-}
+};
 
 export default Header;
 
-
-
-
-
-
-
 //------------------------ufro martivi----magram reduxit minda gavaketo da amito es amovige--------------------
-
 
 // Header.jsx - Much cleaner!
 // import { useNavigate, useLocation } from "react-router-dom";
@@ -127,11 +123,6 @@ export default Header;
 //   );
 // };
 // export default Header;
-
-
-
-
-
 
 //-------------------------PlanTripPageshi-------------------------
 // import { useSearchParams } from "react-router-dom";

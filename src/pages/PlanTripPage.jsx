@@ -93,10 +93,8 @@ const PlanTripPage = () => {
   return (
     <div className="plan-trip-page">
       {/* Trip Sidebar */}
-     <TripSidebar />
+      <TripSidebar />
 
-    
-    
       {/* Search Input */}
       <input
         type="text"
@@ -136,12 +134,19 @@ const PlanTripPage = () => {
       </div>
 
       <div className="favourites-wrapper">
-     <label>
-      <input type="checkbox"
-checked = {showFavouritesOnly}  //true when checked, false when unchecked
-onChange={(e) => setShowFavouritesOnly(e.target.checked)}
-        /> Show Favorites Only
-     </label>
+        <label className="favorites-checkbox">
+          <input
+            type="checkbox"
+            checked={showFavouritesOnly}
+            onChange={(e) => setShowFavouritesOnly(e.target.checked)}
+          />
+          <span className="checkbox-text">Show Favorites Only</span>
+          {showFavouritesOnly && (
+            <span className="favorites-count">
+              ({favorites.length} countries)
+            </span>
+          )}
+        </label>
       </div>
 
       {/* No Results Message */}
@@ -194,8 +199,7 @@ onChange={(e) => setShowFavouritesOnly(e.target.checked)}
                   className="country-flag"
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src =
-                      "https://via.placeholder.com/300x200/cccccc/969696?text=Flag+Not+Found";
+                    e.target.src = "https://picsum.photos/300/200?grayscale"; // Simple, always works
                   }}
                 />
               </div>
@@ -252,6 +256,49 @@ onChange={(e) => setShowFavouritesOnly(e.target.checked)}
 };
 
 export default PlanTripPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

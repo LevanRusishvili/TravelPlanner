@@ -41,7 +41,7 @@ const ShowCard = ({
   const handleFavoriteClick = () => {
     onToggleFavorite(country.cca2);
     setShowAddedMessage(
-      isFavorite ? "Removed from favorites" : "Added to favorites"
+      isFavorite ? "Removed from favorites" : "Added to favorites",
     );
     setTimeout(() => setShowAddedMessage(""), 2000);
   };
@@ -49,53 +49,18 @@ const ShowCard = ({
   const handleTripClick = () => {
     onTogglePlan(country.cca2);
     setShowAddedMessage(
-      isPlanned ? "Removed from trip plan" : "Added to trip plan"
+      isPlanned ? "Removed from trip plan" : "Added to trip plan",
     );
     setTimeout(() => setShowAddedMessage(""), 2000);
   };
 
-  // const openInMaps = () => {
-  //   if (country.maps?.googleMaps) {
-  //     window.open(country.maps.googleMaps, "_blank");
-  //   } else if (country.latlng) {
-  //     const [lat, lng] = country.latlng;
-  //     window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
-  //   }
-  // };
-
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+        {/* Close button - FIRST element in modal-card */}
         <button className="close-button" onClick={onClose}>
           <FaTimes />
         </button>
-
-        {/* Header with Action Buttons */}
-        <div className="card-header">
-          <div className="header-content">
-            <h2 className="card-country-name">{country.name.common}</h2>
-            {country.name.official && (
-              <p className="official-name">{country.name.official}</p>
-            )}
-          </div>
-
-          <div className="action-buttons">
-            <button
-              className={`action-btn favorite ${isFavorite ? "active" : ""}`}
-              onClick={handleFavoriteClick}
-            >
-              <FaHeart /> Add to Favorites
-            </button>
-            <button
-              className={`action-btn trip ${isPlanned ? "active" : ""}`}
-              onClick={handleTripClick}
-            >
-              <FaPlus /> Add to Trip
-            </button>
-          </div>
-        </div>
-
-        <hr className="divider" />
 
         {/* Notification Message */}
         {showAddedMessage && (
@@ -108,8 +73,39 @@ const ShowCard = ({
             src={country.flags.png}
             alt={country.name.common}
             className="card-flag-image"
+            onError={(e) => {
+              e.target.src = "https://picsum.photos/400/300?grayscale";
+            }}
           />
+          <div className="header-content">
+            <h2 className="card-country-name">{country.name.common}</h2>
+            {country.name.official && (
+              <p className="official-name">{country.name.official}</p>
+            )}
+          </div>
         </div>
+
+        {/* Header with Action Buttons */}
+        <div className="card-header">
+          <div className="action-buttons">
+            <button
+              className={`action-btn favorite ${isFavorite ? "active" : ""}`}
+              onClick={handleFavoriteClick}
+            >
+              <FaHeart />{" "}
+              {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+            </button>
+            <button
+              className={`action-btn trip ${isPlanned ? "active" : ""}`}
+              onClick={handleTripClick}
+            >
+              <FaPlus /> {isPlanned ? "Remove from Trip" : "Add to Trip"}
+            </button>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <hr className="divider" />
 
         {/* Main Content */}
         <div className="card-content">
@@ -172,13 +168,6 @@ const ShowCard = ({
               </p>
             </div>
           </div>
-
-          {/* Map Link */}
-          {/* <div className="map-section">
-            <button className="map-link" onClick={openInMaps}>
-              <FaMap /> View on Google Maps
-            </button>
-          </div> */}
         </div>
       </div>
     </div>

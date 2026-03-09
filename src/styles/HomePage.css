@@ -85,12 +85,11 @@
 
 
 
-
 .main-info {
-  background-color: rgba(217, 229, 255, 0.993);
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 0;  /* Remove padding, it's handled by Layout */
+  background: transparent;  /* Remove blue, it's on app-container */
 }
 
 .plan-adventure {
@@ -98,10 +97,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 100px 20px 60px;
+  padding: 40px 20px 60px;  /* Adjust padding */
   max-width: 800px;
   margin: 0 auto;
 }
+
+
 
 .plan-adventure h1 {
   font-family: sans-serif;
